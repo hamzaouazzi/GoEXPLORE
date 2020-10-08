@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "170561179869",
+    "firebase_url": "https://goexplore-f9d29.firebaseio.com",
+    "project_id": "goexplore-f9d29",
+    "storage_bucket": "goexplore-f9d29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170561179869:android:ef77dad17f461ae1804b34",
+        "android_client_info": {
+          "package_name": "com.hamza.ouazzi.GoEXPLORE"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170561179869-hr0qdmts9rmihc8f9i5cnbqmo2liclad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ0fQy75-9gNV_ISMlPYtelvvH1GRPtPM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170561179869-hr0qdmts9rmihc8f9i5cnbqmo2liclad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
