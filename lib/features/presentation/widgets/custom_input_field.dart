@@ -59,8 +59,8 @@ class _CustomInputFieldState extends State<CustomInputField> {
                             color: _showPassword != null
                                 ? !_showPassword
                                     ? Colors.deepOrange
-                                    : Colors.grey
-                                : Colors.grey,
+                                    : Colors.grey[250]
+                                : Colors.grey[250],
                           ),
                         ),
                       )

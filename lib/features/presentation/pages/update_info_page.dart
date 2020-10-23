@@ -9,8 +9,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../../injection_container.dart';
-import '../../../../src/widgets/custom_app_bar_action.dart';
+import '../../../injection_container.dart';
+import '../../../src/widgets/custom_app_bar_action.dart';
 import '../../data/datasources/login_local_data_source.dart';
 import '../../data/models/user_model.dart';
 import '../bloc/login_bloc.dart';

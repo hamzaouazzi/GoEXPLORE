@@ -17,7 +17,7 @@ class CustomSubmitButton extends StatelessWidget {
         color: Theme.of(context).primaryColor,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey[200],
+            color: Colors.grey[250],
             spreadRadius: 2,
           )
         ],
