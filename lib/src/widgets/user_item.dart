@@ -8,11 +8,19 @@ import 'custom_action_button.dart';
 
 class UserItem extends StatefulWidget {
   final DocumentSnapshot userDocument;
-  
+   final bool isFriend;
+  final bool isRequest;
+  final Function onAddFriendPressed;
+  final Function onDeleteRequestPressed;
+  final Function onAcceptRequestPressed;
 
   const UserItem({
     @required this.userDocument,
-  
+    this.isFriend = true,
+    this.isRequest = false,
+    this.onAddFriendPressed,
+    this.onDeleteRequestPressed,
+    this.onAcceptRequestPressed,
   });
 
   @override
@@ -20,7 +28,10 @@ class UserItem extends StatefulWidget {
 }
 
 class _UserItemState extends State<UserItem> {
- 
+  bool _isRequestSent = false;
+  bool _isRequestAccepted = false;
+  bool _isRequestDeleted = false;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -38,7 +49,7 @@ class _UserItemState extends State<UserItem> {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-           
+            onTap: widget.isFriend || _isRequestAccepted ? _openChatPage : null,
             splashColor: Theme.of(context).splashColor,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -68,12 +79,71 @@ class _UserItemState extends State<UserItem> {
                     widget.userDocument.data['email'],
                   ),
                 ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: !widget.isFriend
+                      ? _isRequestAccepted ||
+                              _isRequestDeleted ||
+                              _isRequestSent
+                          ? Padding(
+                              padding: const EdgeInsets.only(bottom: 8.0),
+                              child: Text(
+                                _isRequestAccepted
+                                    ? 'You are now friends. click to start chatting!'
+                                    : _isRequestSent
+                                        ? 'Request Sent'
+                                        : 'Request Deleted',
+                              ),
+                            )
+                          : Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                CustomActionButton(
+                                  title: widget.isRequest
+                                      ? 'Accept Request'
+                                      : 'Add Friend',
+                                  onPressed: widget.isRequest
+                                      ? _onAcceptRequestPressed
+                                      : _onAddFriendPressed,
+                                ),
+                                SizedBox(width: 10),
+                                widget.isRequest
+                                    ? CustomActionButton(
+                                        title: 'Delete',
+                                        onPressed: _onDeleteRequestPressed,
+                                      )
+                                    : Container()
+                              ],
+                            )
+                      : Container(),
+                )
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  Function _onAcceptRequestPressed() {
+    setState(() {
+      _isRequestAccepted = true;
+    });
+    return widget.onAcceptRequestPressed();
+  }
+
+  Function _onAddFriendPressed() {
+    setState(() {
+      _isRequestSent = true;
+    });
+    return widget.onAddFriendPressed();
+  }
+
+  void _onDeleteRequestPressed() {
+    setState(() {
+      _isRequestDeleted = true;
+    });
+    widget.onDeleteRequestPressed();
   }
 
   void _openChatPage() {
