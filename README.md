@@ -1,7 +1,7 @@
 # GoEXPLORE
 
-- Flutter project.
-- The App is still under development so please wait for the fully-featured version.
+Flutter project
+
 
 ## Features:
 - Multiple App Theme(Dark, Light) modes.
